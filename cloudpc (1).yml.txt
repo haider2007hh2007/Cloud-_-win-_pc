@@ -1,0 +1,16 @@
+
+name: Windows Cloud PC
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Setup Ngrok & Start RDP
+        shell: powershell
+        run: |
+          iwr -useb https://raw.githubusercontent.com/Napili12347/Pc/main/cloudpc.ps1 | iex
+        env:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
